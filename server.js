@@ -2,29 +2,28 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const morgan = require('morgan');
-
-const app = express();
+// const morgan = require('morgan');
 const path = require('path');
 
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 
+const app = express();
 /*------- Body Parser and Morgan middleware -------*/
+// app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use(logger('dev'));
 
 /*------- DB Config -------*/
 const db = require('./config/keys').mongoURI;
 
 /*------- Connect to MongoDB -------*/
-config = {
-    autoIndex: false,
-    useNewUrlParser: true,
-}
-mongoose.connect(db, config)
+// config = {
+//     autoIndex: false,
+//     useNewUrlParser: true,
+// }
+mongoose.connect(db)
         .then(() => console.log('MongoDB Connected'))
         .catch(err => console.log(err));
 
