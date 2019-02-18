@@ -41,6 +41,17 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 
+//Server static assets if in production
+if (process.env.NODE_ENV) {
+    //Set statis folder
+    app.use(express.static('MERN-ClientSide/build'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname,  'MERN-ClientSide', 'index.html' ));
+    } );
+} else {
+    
+}
+
 
 // const port = process.env.PORT ||5000;       //for Heroku
 const port = 5000;
