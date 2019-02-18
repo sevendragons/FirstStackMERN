@@ -1,3 +1,4 @@
 /node_modules
 /package-lock.json
-/mern-client
+/config/keys_dev.js
+
